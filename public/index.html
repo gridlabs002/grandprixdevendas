@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script>document.documentElement.classList.add("js")</script>
+<link rel="canonical" href="https://www.grandprixdevendas.com.br/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grand Prix de Vendas | M&eacute;todo F&iacute;gital pro varejo automotivo</title>
+<meta name="description" content="Marketing de performance que enche a concession&aacute;ria + treinamento presencial que converte. O m&eacute;todo F&iacute;gital de vendas, fundado por Edney Ulisses.">
+<link rel="icon" type="image/png" href="/assets/icone.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ── Autódromo overrides ── */
+section.code-block-section { padding: 0 !important; }
+section.code-block-section > h2 { display: none !important; }
+
+/* ── Fontes da marca ─────────────────────────────────────────────────── */
+@font-face {
+  font-family: 'SPORTINO';
+  src: url('/assets/sportino.otf') format('opentype'),
+       url('/assets/sportino.ttf') format('truetype');
+  font-weight: 100 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'MuseoSans';
+  src: url('/assets/museosans-300.otf') format('opentype');
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'MuseoSans';
+  src: url('/assets/museosans.otf') format('opentype');
+  font-weight: 400 600;
+  font-display: swap;
+}
+
+/* ── Design tokens ───────────────────────────────────────────────────── */
+:root {
+  --cor-vermelho: #ed0717;
+  --cor-vermelho-escuro: #b3000e;
+  --cor-vermelho-claro: #ff2335;
+  --cor-branco: #ffffff;
+  --cor-offwhite: #f5f4f2;
+  --cor-cinza-100: #e6e4e0;
+  --cor-cinza-200: #d4d1cc;
+  --cor-taupe: #a3a09b;
+  --cor-cinza-500: #6b6864;
+  --cor-cinza-700: #3a3938;
+  --cor-charcoal: #232323;
+  --cor-preto: #141414;
+
+  --fundo: var(--cor-offwhite);
+  --fundo-2: var(--cor-branco);
+  --fundo-3: var(--cor-cinza-100);
+  --texto: #1a1a1a;
+  --texto-suave: var(--cor-cinza-500);
+  --destaque: var(--cor-vermelho);
+  --destaque-contraste: var(--cor-branco);
+  --linha: rgba(0, 0, 0, 0.12);
+
+  --fonte-titulo: 'SPORTINO', 'Saira Condensed', 'Arial Narrow', system-ui, sans-serif;
+  --fonte-texto: 'MuseoSans', system-ui, -apple-system, sans-serif;
+
+  --raio: 4px;
+  --raio-grande: 14px;
+  --largura-max: 1200px;
+  --transicao: 280ms cubic-bezier(0.22, 1, 0.36, 1);
+  --sombra: 0 14px 50px rgba(0, 0, 0, 0.12);
+  --sombra-vermelha: 0 10px 30px rgba(237, 7, 23, 0.28);
+}
+
+.bloco-escuro {
+  --fundo: var(--cor-charcoal);
+  --fundo-2: #2d2d2d;
+  --fundo-3: var(--cor-preto);
+  --texto: var(--cor-branco);
+  --texto-suave: #c9c9c9;
+  --linha: rgba(255, 255, 255, 0.12);
+  background: var(--fundo);
+  color: var(--texto);
+}
+
+/* ── Reset + Global ──────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--fonte-texto);
+  background: var(--fundo);
+  color: var(--texto);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+h1, h2 {
+  font-family: var(--fonte-titulo);
+  line-height: 1.04;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  font-weight: 700;
+}
+h3, h4 {
+  font-family: var(--fonte-texto);
+  line-height: 1.2;
+  letter-spacing: 0;
+  font-weight: 700;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+.container {
+  width: 100%;
+  max-width: var(--largura-max);
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+}
+
+/* ── Bot&otilde;es ──────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--fonte-titulo);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding: 0.85rem 1.8rem;
+  border-radius: var(--raio);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform var(--transicao), box-shadow var(--transicao), background var(--transicao), border-color var(--transicao);
+}
+.btn-primario {
+  background: var(--destaque);
+  color: var(--destaque-contraste);
+  box-shadow: var(--sombra-vermelha);
+}
+.btn-primario:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 40px rgba(237, 7, 23, 0.45);
+}
+.btn-fantasma {
+  background: transparent;
+  color: var(--texto);
+  border-color: var(--linha);
+}
+.btn-fantasma:hover {
+  border-color: var(--destaque);
+  color: var(--cor-vermelho-claro);
+  transform: translateY(-3px);
+}
+
+/* ── Granulado ───────────────────────────────────────────────────────── */
+.grao::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.bloco-escuro.grao::before { mix-blend-mode: screen; opacity: 0.07; }
+
+/* ── Scroll progress ─────────────────────────────────────────────────── */
+#scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px; width: 0;
+  z-index: 100;
+  background: linear-gradient(90deg, var(--cor-vermelho), var(--cor-vermelho-claro));
+  box-shadow: 0 0 12px rgba(237, 7, 23, 0.6);
+  transition: width 120ms linear;
+}
+#scroll-car {
+  position: absolute;
+  right: 0; top: 50%;
+  width: 32px; height: auto;
+  transform: translate(48%, -58%);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35));
+}
+
+/* ── Anima&ccedil;&otilde;es de entrada ────────────────────────────────────────────── */
+.js [data-anima] {
+  opacity: 0;
+  transform: translateY(34px);
+  transition: opacity 750ms ease, transform 850ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--delay, 0ms);
+}
+[data-anima].visivel { opacity: 1; transform: none; }
+[data-anima='esquerda'] { transform: translateX(-48px); }
+[data-anima='direita'] { transform: translateX(48px); }
+[data-anima='escala'] { transform: scale(0.92); }
+[data-anima='esquerda'].visivel,
+[data-anima='direita'].visivel,
+[data-anima='escala'].visivel { transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  [data-anima] { opacity: 1; transform: none; }
+}
+
+/* ── FlagReveal ──────────────────────────────────────────────────────── */
+#flag-reveal {
+  display:none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  overflow: hidden;
+  pointer-events: none;
+  background: #141414;
+  will-change: transform;
+  transition: transform 540ms cubic-bezier(0.65, 0, 0.35, 1), opacity 280ms ease 320ms;
+}
+.js #flag-reveal {display:block;}
+#flag-reveal.reveal {
+  transform: translate(125%, 92%) rotate(-9deg);
+  opacity: 0;
+}
+#flag-reveal .bandeirao {
+  position: absolute;
+  top: -12%; left: -12%;
+  width: 124%; height: 124%;
+  animation: bandeira-balanca 4.5s ease-in-out infinite;
+}
+@keyframes bandeira-balanca {
+  0%, 100% { transform: rotate(-1.5deg) translateY(0); }
+  50% { transform: rotate(1.5deg) translateY(-10px); }
+}
+@media (prefers-reduced-motion: reduce) { #flag-reveal { display: none !important; } }
+
+/* ── Header ──────────────────────────────────────────────────────────── */
+.cabecalho {
+  position: sticky;
+  top: 0; z-index: 50;
+  backdrop-filter: blur(12px);
+  background: color-mix(in srgb, var(--fundo) 78%, transparent);
+  border-bottom: 1px solid var(--linha);
+}
+.cabecalho-interno {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+.logo { display: flex; align-items: center; }
+.logo img { height: 42px; width: auto; }
+.nav { display: flex; align-items: center; gap: 2rem; }
+.nav a {
+  font-family: var(--fonte-texto);
+  letter-spacing: 0.01em;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--texto-suave);
+  transition: color var(--transicao);
+}
+.nav a:hover { color: var(--texto); }
+.nav-cta {
+  position: relative;
+  overflow: hidden;
+  color: var(--texto) !important;
+  border: 2px solid var(--destaque);
+  padding: 0.5rem 1.1rem;
+  border-radius: var(--raio);
+  transition: background var(--transicao), color var(--transicao);
+}
+.nav-cta:hover { background: var(--destaque); color: var(--cor-branco) !important; }
+.nav-cta::after {
+  content: '';
+  position: absolute; top: 0; left: -60%;
+  width: 40%; height: 100%;
+  background: linear-gradient(115deg, transparent 0%, rgba(46,204,113,0.65) 50%, transparent 100%);
+  transform: skewX(-20deg);
+  opacity: 0;
+  pointer-events: none;
+}
+.nav-cta.cta-lamina::after {
+  opacity: 1;
+  animation: cta-lamina-sweep 2.4s ease-in-out infinite;
+}
+@keyframes cta-lamina-sweep {
+  0%, 8% { left: -60%; }
+  55%, 100% { left: 130%; }
+}
+@media (prefers-reduced-motion: reduce) { .nav-cta.cta-lamina::after { animation: none; opacity: 0; } }
+.nav-instagram { display: flex; align-items: center; color: var(--texto-suave); }
+.nav-instagram svg { width: 20px; height: 20px; }
+.nav-instagram:hover { color: var(--texto); }
+@media (max-width: 760px) { .nav a:not(.nav-cta) { display: none; } }
+
+/* ── Veloc&iacute;metro ─────────────────────────────────────────────────────── */
+.velo { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.velo-svg { width: min(230px, 88%); height: auto; overflow: visible; }
+.velo-track { fill: none; stroke: rgba(255,255,255,0.18); stroke-width: 8; stroke-linecap: round; }
+.velo-fill {
+  fill: none;
+  stroke: var(--cor-vermelho);
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-dasharray: 245;
+  stroke-dashoffset: 245;
+  transition: stroke-dashoffset 1.6s cubic-bezier(0.34, 1.4, 0.64, 1);
+  filter: drop-shadow(0 0 6px rgba(237,7,23,0.5));
+}
+.velo.run .velo-fill { stroke-dashoffset: 8; }
+.tick { stroke: rgba(255,255,255,0.3); stroke-width: 2; }
+.tick.maior { stroke: rgba(255,255,255,0.55); stroke-width: 3; }
+.velo-needle {
+  transform: rotate(-90deg);
+  transform-box: view-box;
+  transform-origin: 100px 110px;
+  transition: transform 1.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.velo-needle line { stroke: var(--cor-vermelho); stroke-width: 4; stroke-linecap: round; }
+.velo.run .velo-needle { transform: rotate(86deg); }
+.velo-pino { fill: #ffffff; }
+.velo-valor {
+  font-family: var(--fonte-titulo);
+  font-weight: 800;
+  font-size: clamp(2.6rem, 5.5vw, 3.6rem);
+  color: var(--cor-branco);
+  line-height: 1;
+  margin-top: -0.4rem;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+}
+.velo-rotulo { color: var(--texto-suave); text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.85rem; margin-top: 0.5rem; }
+@media (prefers-reduced-motion: reduce) { .velo-fill, .velo-needle { transition: none; } }
+
+/* ── HERO ────────────────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 86vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 78% 12%, rgba(237,7,23,0.1), transparent 55%),
+              linear-gradient(180deg, var(--cor-branco), var(--fundo));
+}
+.hero-faixas {
+  position: absolute; inset: 0; z-index: 0;
+  background-image: repeating-linear-gradient(115deg, transparent 0 40px, rgba(0,0,0,0.035) 40px 42px);
+  mask-image: linear-gradient(90deg, transparent, #000 45%, #000 65%, transparent);
+  animation: desliza 14s linear infinite;
+}
+@keyframes desliza { from { background-position: 0 0; } to { background-position: 400px 0; } }
+.hero-conteudo { position: relative; z-index: 1; padding-block: 5rem; }
+.hero-tag {
+  display: inline-block;
+  font-family: var(--fonte-texto);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.82rem;
+  color: var(--destaque);
+  border: 1px solid var(--linha);
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  margin-bottom: 1.6rem;
+}
+.hero h1 { font-size: clamp(2.6rem, 7vw, 5.5rem); }
+.destaque-texto { color: var(--destaque); }
+.hero-faixa-vermelha {
+  background: linear-gradient(var(--cor-vermelho), var(--cor-vermelho)) no-repeat left 55%;
+  background-size: 100% 78%;
+  color: var(--cor-branco);
+  padding: 0 0.2em;
+  display: inline;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  animation: faixa-entra 1.1s cubic-bezier(0.22, 1, 0.36, 1) 1.4s forwards;
+}
+@keyframes faixa-entra {
+  to { background-size: 100% 78%; }
+}
+.hero-texto { max-width: 52ch; color: var(--texto-suave); font-size: clamp(1.05rem, 2vw, 1.3rem); margin-top: 1.6rem; }
+.hero-acoes { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2.4rem; }
+
+/* ── N&uacute;meros ─────────────────────────────────────────────────────────── */
+.numeros {
+  position: relative;
+  border-block: 1px solid var(--linha);
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      rgba(255,255,255,0.02) 0px,
+      rgba(255,255,255,0.02) 1px,
+      transparent 1px,
+      transparent 8px
+    ),
+    radial-gradient(ellipse at 50% 120%, rgba(237,7,23,0.07) 0%, transparent 60%),
+    var(--fundo);
+}
+.numeros-grid {
+  position: relative; z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding-block: 3rem;
+  text-align: center;
+}
+.numero-item { display: flex; flex-direction: column; gap: 0.4rem; }
+
+/* ── Se&ccedil;&otilde;es gen&eacute;ricas ────────────────────────────────────────────────── */
+section { padding-block: clamp(4rem, 9vw, 7rem); }
+.secao-cabecalho { max-width: 60ch; }
+.secao-cabecalho.alinhado { max-width: 40ch; }
+.secao-tag { display: none; }
+.secao-tag-hidden {
+  display: inline-block;
+  font-family: var(--fonte-texto);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.8rem;
+  color: var(--destaque);
+  margin-bottom: 1rem;
+}
+.secao-cabecalho h2 { font-size: clamp(2rem, 4.5vw, 3.2rem); }
+.secao-cabecalho p { color: var(--texto-suave); font-size: 1.15rem; margin-top: 1.2rem; }
+
+/* ── Timeline ────────────────────────────────────────────────────────── */
+.timeline { position: relative; margin-top: 3.5rem; }
+.trilha {
+  position: absolute;
+  top: 31px; left: 12%; right: 12%;
+  height: 3px;
+  background: var(--linha);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.trilha-fill {
+  display: block; height: 100%; width: 100%;
+  background: linear-gradient(90deg, var(--cor-vermelho), var(--cor-vermelho-claro));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1400ms cubic-bezier(0.65, 0, 0.35, 1) 250ms;
+}
+.timeline.visivel .trilha-fill { transform: scaleX(1); }
+.etapas {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  position: relative;
+}
+.etapa {
+  text-align: center;
+  padding: 0 1rem;
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 600ms ease, transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.timeline.visivel .etapa { opacity: 1; transform: none; }
+.timeline.visivel .etapa:nth-child(2) { transition-delay: 220ms; }
+.timeline.visivel .etapa:nth-child(3) { transition-delay: 440ms; }
+.etapa-no {
+  width: 62px; height: 62px;
+  border-radius: 50%;
+  display: inline-grid; place-items: center;
+  font-family: var(--fonte-titulo);
+  font-size: 1.5rem;
+  color: var(--cor-branco);
+  background: var(--cor-vermelho);
+  box-shadow: var(--sombra-vermelha);
+  border: 4px solid var(--fundo);
+  position: relative; z-index: 1;
+}
+.etapa h3 { margin: 1.1rem 0 0.5rem; font-size: 1.3rem; }
+.etapa p { color: var(--texto-suave); }
+
+/* ── Tilt Cards (M&eacute;todo) ──────────────────────────────────────────────── */
+.metodo .secao-cabecalho { max-width: 70ch; text-align: center; margin-inline: auto; }
+.metodo-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3.5rem; }
+.tilt-card { position: relative; overflow: hidden; border-radius: var(--raio-grande); background: linear-gradient(135deg, #2a2a2a 0%, #141414 100%); border: 1px solid rgba(192,192,192,0.28); box-shadow: 0 0 0 1px rgba(255,255,255,0.04), inset 0 1px 0 rgba(255,255,255,0.08); padding: 2rem; will-change: transform; transform-style: preserve-3d; cursor: default; }
+.tilt-card-inner { position: relative; z-index: 1; }
+.tilt-gravitate { position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity 0.4s; }
+.tilt-no { font-family: var(--fonte-titulo); font-weight: 800; font-size: 2.5rem; color: var(--destaque); opacity: 0.7; }
+.tilt-card h3 { font-size: 1.4rem; margin: 0.6rem 0 0.8rem; color: var(--cor-branco); }
+.tilt-card p { color: rgba(255,255,255,0.55); font-size: 0.95rem; line-height: 1.6; }
+@media (max-width: 768px) { .metodo-cards { grid-template-columns: 1fr; } }
+
+/* ── Como funciona ───────────────────────────────────────────────────── */
+.passos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+.passo {
+  background: var(--fundo-2);
+  border: 1px solid var(--linha);
+  border-radius: var(--raio-grande);
+  padding: 2rem;
+  transition: transform var(--transicao), border-color var(--transicao);
+}
+.passo:hover { transform: translateY(-6px); border-color: var(--destaque); }
+.passo-n { font-family: var(--fonte-titulo); font-weight: 800; font-size: 2.5rem; color: var(--destaque); opacity: 0.4; }
+.passo h3 { font-size: 1.4rem; margin: 0.6rem 0 0.8rem; }
+.passo p { color: var(--texto-suave); }
+
+/* ── Rubinho ─────────────────────────────────────────────────────────── */
+.rubinho { position: relative; }
+.rubinho-grid {
+  position: relative; z-index: 1;
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+}
+.rubinho-visual { display: flex; flex-direction: column; align-items: center; gap: 1.4rem; }
+.rubinho-avatar {
+  position: relative;
+  width: clamp(160px, 22vw, 220px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  background: radial-gradient(circle at 30% 25%, #3a3a3a, #1a1a1a 70%);
+  border: 3px solid var(--cor-vermelho);
+  box-shadow: 0 0 0 8px rgba(237,7,23,0.12), 0 12px 40px rgba(237,7,23,0.35);
+}
+.rubinho-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+.rubinho-inicial { font-family: var(--fonte-titulo); font-weight: 800; font-size: 5rem; color: var(--cor-branco); line-height: 1; }
+.rubinho-online {
+  position: absolute; bottom: 6%; right: 0;
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  background: var(--cor-preto);
+  border: 1px solid var(--linha);
+  color: var(--cor-branco);
+  font-size: 0.75rem; font-weight: 700;
+  padding: 0.28rem 0.6rem;
+  border-radius: 999px;
+}
+.rubinho-online i {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #23d160;
+  box-shadow: 0 0 0 0 rgba(35,209,96,0.7);
+  animation: pulso 1.8s ease-out infinite;
+}
+@keyframes pulso {
+  0% { box-shadow: 0 0 0 0 rgba(35,209,96,0.6); }
+  70% { box-shadow: 0 0 0 8px rgba(35,209,96,0); }
+  100% { box-shadow: 0 0 0 0 rgba(35,209,96,0); }
+}
+.rubinho-audio {
+  display: inline-flex; align-items: center; gap: 0.7rem;
+  background: var(--fundo-2); border: 1px solid var(--linha);
+  border-radius: 999px; padding: 0.5rem 0.9rem;
+}
+.rubinho-play {
+  width: 0; height: 0;
+  border-style: solid;
+  border-width: 6px 0 6px 10px;
+  border-color: transparent transparent transparent var(--cor-vermelho);
+  margin-left: 2px;
+}
+.rubinho-ondas { display: inline-flex; align-items: center; gap: 3px; height: 22px; }
+.rubinho-ondas i {
+  width: 3px; height: 40%;
+  background: var(--cor-vermelho); border-radius: 2px;
+  animation: equalizar 1s ease-in-out infinite;
+}
+.rubinho-ondas i:nth-child(2n) { animation-delay: 0.15s; }
+.rubinho-ondas i:nth-child(3n) { animation-delay: 0.3s; }
+.rubinho-ondas i:nth-child(4n) { animation-delay: 0.45s; }
+.rubinho-ondas i:nth-child(5n) { animation-delay: 0.6s; }
+@keyframes equalizar { 0%, 100% { height: 25%; } 50% { height: 95%; } }
+.rubinho-tempo { color: var(--texto-suave); font-size: 0.8rem; font-variant-numeric: tabular-nums; }
+.rubinho-bordao { font-style: italic; color: var(--texto-suave); font-size: 1.05rem; }
+.rubinho-conteudo h2 { font-size: clamp(2rem, 4.5vw, 3.2rem); }
+.rubinho-lead { color: var(--texto-suave); font-size: 1.12rem; margin-top: 1rem; }
+.rubinho-features { list-style: none; display: grid; gap: 0.9rem; margin: 1.8rem 0; }
+.rubinho-features li { display: flex; align-items: center; gap: 0.8rem; color: var(--texto); }
+.rubinho-features strong { color: var(--cor-branco); }
+.rf-icone {
+  flex-shrink: 0; width: 38px; height: 38px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: rgba(237,7,23,0.14);
+  color: var(--cor-vermelho-claro);
+}
+.rf-icone svg { width: 20px; height: 20px; }
+.rubinho-cta-box {
+  position: relative;
+  overflow: hidden;
+  margin-top: 1.6rem;
+  padding: 2.4rem 2rem;
+  border-radius: var(--raio-grande);
+  background: radial-gradient(120% 140% at 50% -10%, rgba(237,7,23,0.28), transparent 62%), var(--fundo-3);
+  border: 1px solid rgba(237,7,23,0.3);
+  text-align: center;
+}
+.rubinho-cta-box h3 { font-family: var(--fonte-titulo); text-transform: uppercase; letter-spacing: 0.01em; font-size: 1.7rem; color: var(--cor-branco); line-height: 1.15; margin-bottom: 0.7rem; }
+.rubinho-cta-box p { color: var(--texto-suave); margin-bottom: 1.6rem; }
+.rubinho-cta-box .btn { position: relative; }
+
+/* ── Clientes ────────────────────────────────────────────────────────── */
+.clientes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 3rem; }
+.cliente-card {
+  background: var(--fundo-2); border: 1px solid var(--linha);
+  border-radius: var(--raio-grande); padding: 1.8rem;
+  display: flex; flex-direction: column; gap: 0.9rem;
+  transition: transform var(--transicao), border-color var(--transicao), box-shadow var(--transicao);
+}
+.cliente-card:hover { transform: translateY(-6px); border-color: var(--destaque); box-shadow: var(--sombra); }
+.cliente-logo {
+  height: 120px; border-radius: var(--raio);
+  background: var(--fundo-3);
+  overflow: hidden;
+}
+.cliente-logo span { font-family: var(--fonte-texto); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--texto-suave); font-size: 1rem; }
+.cliente-card h3 { font-size: 1.2rem; }
+.cliente-link {
+  margin-top: auto;
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-family: var(--fonte-texto); font-weight: 700; letter-spacing: 0.01em;
+  font-size: 0.95rem; color: var(--destaque);
+  transition: gap var(--transicao);
+}
+.cliente-link:hover { gap: 0.8rem; }
+
+/* ── Pra quem &eacute; ──────────────────────────────────────────────────────── */
+.para-quem { background: var(--fundo-2); border-block: 1px solid var(--linha); }
+.para-quem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+.lista-publico { list-style: none; display: flex; flex-direction: column; }
+.lista-publico li {
+  display: flex; align-items: center; gap: 1.5rem;
+  padding: 1.25rem 0 1.25rem 0;
+  border-bottom: 1px solid var(--linha);
+  position: relative; overflow: hidden; cursor: default;
+  transition: padding-left var(--transicao);
+}
+.lista-publico li::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  background: var(--destaque); transform: scaleY(0); transform-origin: center;
+  transition: transform var(--transicao);
+}
+.lista-publico li:hover::before { transform: scaleY(1); }
+.lista-publico li:hover { padding-left: 1rem; }
+.lista-pub-num {
+  font-family: var(--fonte-titulo); font-size: 1.8rem; font-weight: 800;
+  color: var(--destaque); opacity: 0.25; min-width: 2.5rem; line-height: 1;
+  transition: opacity var(--transicao);
+}
+.lista-publico li:hover .lista-pub-num { opacity: 0.7; }
+.lista-pub-titulo { font-size: 1.1rem; font-weight: 600; }
+
+/* ── Avalia&ccedil;&otilde;es ──────────────────────────────────────────────────────── */
+.avaliacoes { background: var(--fundo-3); border-block: 1px solid var(--linha); overflow: hidden; }
+.avaliacoes-cabecalho { max-width: none; text-align: center; margin-inline: auto; }
+.avaliacoes-nota { display: flex; align-items: center; justify-content: center; gap: 0.7rem; margin-top: 1.2rem; }
+.avaliacoes-nota strong { font-family: var(--fonte-titulo); font-size: 2rem; line-height: 1; }
+.avaliacoes-fonte { color: var(--texto-suave); font-size: 0.95rem; }
+.estrelas { color: #f5a623; letter-spacing: 0.1em; }
+
+/* colunas de scroll */
+@keyframes scroll-up { from { transform: translateY(0); } to { transform: translateY(-50%); } }
+.avalia-colunas {
+  display: flex; gap: 1.25rem; margin-top: 3rem;
+  max-height: 680px; overflow: hidden;
+  mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
+}
+.avalia-col { flex: 1; min-width: 0; }
+.avalia-col:nth-child(2),
+.avalia-col:nth-child(3) { display: none; }
+@media (min-width: 700px) { .avalia-col:nth-child(2) { display: block; } }
+@media (min-width: 1024px) { .avalia-col:nth-child(3) { display: block; } }
+.avalia-lista {
+  display: flex; flex-direction: column; gap: 1.25rem;
+  list-style: none; margin: 0; padding: 0;
+}
+.avalia-col:nth-child(1) .avalia-lista { animation: scroll-up 18s linear infinite; }
+.avalia-col:nth-child(2) .avalia-lista { animation: scroll-up 22s linear infinite; }
+.avalia-col:nth-child(3) .avalia-lista { animation: scroll-up 20s linear infinite; }
+@media (prefers-reduced-motion: reduce) { .avalia-lista { animation: none; } }
+
+/* card */
+.avalia-card {
+  background: var(--fundo-2); border: 1px solid var(--linha);
+  border-radius: var(--raio-grande); padding: 1.5rem;
+  cursor: default; transition: transform var(--transicao), box-shadow var(--transicao);
+}
+.avalia-card:hover { transform: scale(1.03) translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
+.avalia-estrelas { color: #f5a623; font-size: 0.9rem; letter-spacing: 0.1em; display: block; margin-bottom: 0.75rem; }
+.avalia-card blockquote { margin: 0; color: var(--texto-suave); font-size: 0.95rem; line-height: 1.6; }
+.avalia-autor { display: flex; align-items: center; gap: 0.75rem; margin-top: 1.25rem; }
+.avalia-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--cor-cinza-200); flex-shrink: 0; object-fit: cover; }
+.avalia-autor-nome { font-weight: 700; font-size: 0.92rem; display: block; }
+.avalia-autor-via { font-size: 0.8rem; color: var(--texto-suave); }
+.avaliacoes-cta { display: flex; justify-content: center; margin-top: 3rem; }
+
+/* ── FAQ ─────────────────────────────────────────────────────────────── */
+.faq-lista { display: flex; flex-direction: column; gap: 1rem; margin-top: 3rem; max-width: 76ch; }
+.faq-item { background: var(--fundo-2); border: 1px solid var(--linha); border-radius: var(--raio-grande); padding: 1.5rem 1.8rem; transition: border-color var(--transicao); }
+.faq-item[open], .faq-item:hover { border-color: var(--destaque); }
+.faq-item summary { display: flex; align-items: center; justify-content: space-between; gap: 1rem; cursor: pointer; font-family: var(--fonte-texto); font-weight: 700; font-size: 1.1rem; list-style: none; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-icone { flex-shrink: 0; position: relative; width: 22px; height: 22px; }
+.faq-icone::before, .faq-icone::after { content: ''; position: absolute; top: 50%; left: 50%; background: var(--destaque); transform: translate(-50%, -50%); transition: transform var(--transicao); }
+.faq-icone::before { width: 14px; height: 2px; }
+.faq-icone::after { width: 2px; height: 14px; }
+.faq-item[open] .faq-icone::after { transform: translate(-50%, -50%) rotate(90deg) scale(0); }
+.faq-item p { color: var(--texto-suave); font-size: 1.02rem; line-height: 1.6; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--linha); }
+
+/* ── Contato ─────────────────────────────────────────────────────────── */
+.contato-caixa {
+  position: relative; overflow: hidden;
+  display: grid; grid-template-columns: 1fr 1.1fr;
+  gap: clamp(2rem, 5vw, 4rem); align-items: center;
+  background: radial-gradient(ellipse at 0% 0%, rgba(237,7,23,0.18), transparent 55%), var(--cor-charcoal);
+  color: var(--cor-branco);
+  border-radius: var(--raio-grande);
+  padding: clamp(2.2rem, 5vw, 3.5rem);
+}
+.contato-caixa > * { position: relative; z-index: 1; }
+.contato-texto h2 { font-size: clamp(2rem, 4.5vw, 3.2rem); }
+.contato-texto p { color: var(--cor-taupe); font-size: 1.15rem; margin-top: 1rem; }
+.contato-form { display: flex; flex-direction: column; gap: 1rem; }
+.campo-linha { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.campo { display: flex; flex-direction: column; gap: 0.4rem; }
+.campo label { font-family: var(--fonte-texto); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.76rem; color: var(--cor-taupe); }
+.campo input, .campo textarea {
+  font-family: var(--fonte-texto); font-size: 1rem;
+  color: var(--cor-branco);
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: var(--raio); padding: 0.75rem 0.9rem;
+  transition: border-color var(--transicao), background var(--transicao);
+}
+.campo input::placeholder, .campo textarea::placeholder { color: rgba(255,255,255,0.4); }
+.campo input:focus, .campo textarea:focus { outline: none; border-color: var(--destaque); background: rgba(255,255,255,0.1); }
+.contato-form .btn { margin-top: 0.4rem; justify-content: center; }
+.contato-aviso { font-size: 0.82rem; color: var(--cor-taupe); text-align: center; }
+
+/* ── Footer ──────────────────────────────────────────────────────────── */
+.rodape { position: relative; border-top: 3px solid var(--destaque); margin-top: 6rem; }
+.rodape > * { position: relative; z-index: 1; }
+.rodape-interno { display: flex; flex-wrap: wrap; gap: 3rem; justify-content: space-between; padding-block: 3.5rem; }
+.rodape-logo-img { height: 46px; width: auto; }
+.rodape-marca p { color: var(--texto-suave); margin-top: 0.5rem; max-width: 32ch; }
+.rodape-grupo { display: flex; flex-direction: column; gap: 0.3rem; }
+.rodape-grupo span { color: var(--texto-suave); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; }
+.rodape-grupo strong { font-family: var(--fonte-titulo); font-size: 1.1rem; text-transform: uppercase; color: var(--destaque); }
+.rodape-links { display: flex; flex-direction: column; gap: 0.35rem; margin-top: 0.75rem; }
+.rodape-links a { color: var(--texto-suave); transition: color var(--transicao); }
+.rodape-links a:hover { color: var(--texto); }
+.rodape-base { border-top: 1px solid var(--linha); padding-block: 1.5rem; font-size: 0.85rem; color: var(--texto-suave); }
+.rodape-social { display: flex; gap: 1rem; margin-top: 1.25rem; }
+.rodape-social a { display: flex; align-items: center; justify-content: center; width: 38px; height: 38px; border: 1px solid var(--linha); border-radius: 50%; color: var(--texto-suave); transition: color var(--transicao), border-color var(--transicao); }
+.rodape-social a:hover { color: var(--destaque); border-color: var(--destaque); }
+.rodape-social svg { width: 18px; height: 18px; }
+.rodape-contato { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: center; margin-top: 1rem; font-size: 0.9rem; }
+.rodape-contato a { color: var(--texto-suave); transition: color var(--transicao); }
+.rodape-contato a:hover { color: var(--texto); }
+.rodape-contato .cta-wa { color: var(--destaque); font-weight: 600; }
+.rodape-contato .cta-wa:hover { opacity: 0.8; }
+
+/* ── Responsivo ──────────────────────────────────────────────────────── */
+@media (max-width: 820px) {
+  .numeros-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .passos { grid-template-columns: 1fr; }
+  .para-quem-grid { grid-template-columns: 1fr; }
+  .clientes-grid { grid-template-columns: 1fr; }
+  .avaliacoes-grid { grid-template-columns: 1fr; }
+  .contato-caixa { grid-template-columns: 1fr; }
+  .campo-linha { grid-template-columns: 1fr; }
+  .etapas { grid-template-columns: 1fr; gap: 2rem; }
+  .trilha { display: none; }
+  .rubinho-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body class="tema-gpdevendas">
+
+<!-- Barra de scroll -->
+<div id="scroll-progress" aria-hidden="true">
+  <svg id="scroll-car" viewBox="0 0 62 26" xmlns="http://www.w3.org/2000/svg">
+    <rect x="2" y="6" width="3.5" height="9" rx="1" fill="#1c1c1c"></rect>
+    <path d="M4 19 L7 19 L9 13 L24 13 L30 9 L42 9 Q52 9 56 14 L60 16 L60 19 Z" fill="#1c1c1c"></path>
+    <path d="M9 13 L24 13 L30 9.6 L26 13 Z" fill="#ed0717"></path>
+    <circle cx="17" cy="19" r="5" fill="#0a0b0c"></circle>
+    <circle cx="17" cy="19" r="1.8" fill="#ed0717"></circle>
+    <circle cx="47" cy="19" r="5" fill="#0a0b0c"></circle>
+    <circle cx="47" cy="19" r="1.8" fill="#ed0717"></circle>
+  </svg>
+</div>
+
+<!-- Flag reveal -->
+<div id="flag-reveal" aria-hidden="true">
+  <svg class="bandeirao" preserveAspectRatio="xMidYMid slice" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="xadrez" width="130" height="130" patternUnits="userSpaceOnUse">
+        <rect width="130" height="130" fill="#ffffff"></rect>
+        <rect width="65" height="65" fill="#1c1c1c"></rect>
+        <rect x="65" y="65" width="65" height="65" fill="#1c1c1c"></rect>
+      </pattern>
+      <filter id="ondular" x="-30%" y="-30%" width="160%" height="160%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.005 0.010" numOctaves="1" seed="4" result="ruido">
+          <animate attributeName="baseFrequency" dur="4s" values="0.005 0.009; 0.007 0.013; 0.005 0.009" repeatCount="indefinite"></animate>
+        </feTurbulence>
+        <feDisplacementMap in="SourceGraphic" in2="ruido" scale="46" xChannelSelector="R" yChannelSelector="G" result="disp"></feDisplacementMap>
+        <feGaussianBlur in="disp" stdDeviation="0.5"></feGaussianBlur>
+      </filter>
+    </defs>
+    <rect x="-160" y="-160" width="1520" height="1120" fill="url(#xadrez)" filter="url(#ondular)"></rect>
+  </svg>
+</div>
+
+<!-- Header -->
+<header class="cabecalho">
+  <div class="container cabecalho-interno">
+    <a class="logo" href="/" aria-label="Grand Prix de Vendas, in&iacute;cio">
+      <img src="/assets/logo-horizontal.png" alt="Grand Prix de Vendas" width="220" height="64">
+    </a>
+    <nav class="nav" aria-label="Navega&ccedil;&atilde;o principal">
+      <a href="#metodo">M&eacute;todo</a>
+      <a href="#clientes">Clientes</a>
+      <a href="#para-quem">Pra quem &eacute;</a>
+      <a href="https://www.instagram.com/gpdevendas/" target="_blank" rel="noopener" aria-label="Instagram" class="nav-instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a class="nav-cta" href="#contato">Falar com a gente</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero grao">
+    <div class="hero-faixas" aria-hidden="true"></div>
+    <div class="container hero-conteudo">
+      <span class="hero-tag" data-anima>F&iacute;sico + Digital = F&iacute;gital</span>
+      <h1 data-anima style="--delay: 80ms">
+        A corrida pela venda<br>
+        <span class="hero-faixa-vermelha">come&ccedil;a antes</span> do cliente<br>
+        entrar na sua loja.
+      </h1>
+      <p class="hero-texto" data-anima style="--delay: 160ms">
+        O Grand Prix de Vendas une marketing de performance e treinamento
+        presencial num m&eacute;todo s&oacute;. Enche o showroom de gente certa e
+        prepara a equipe pra fechar.
+      </p>
+      <div class="hero-acoes" data-anima style="--delay: 240ms">
+        <a class="btn btn-primario" href="#contato">Quero acelerar minhas vendas</a>
+        <a class="btn btn-fantasma" href="#metodo">Ver o m&eacute;todo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- N&Uacute;MEROS -->
+  <section class="numeros bloco-escuro grao">
+    <div class="container numeros-grid">
+
+      <div class="numero-item" data-anima style="--delay: 0ms">
+        <div class="velo" data-alvo="20" data-sufixo="+">
+          <svg class="velo-svg" viewBox="0 0 200 124" aria-hidden="true">
+            <path class="velo-track" d="M22 110 A 78 78 0 0 1 178 110"></path>
+            <path class="velo-fill" d="M22 110 A 78 78 0 0 1 178 110"></path>
+            <line class="tick maior" x1="18" y1="110" x2="34" y2="110"/>
+            <line class="tick" x1="24.2" y1="78.6" x2="39.0" y2="84.7"/>
+            <line class="tick maior" x1="42.0" y1="52.0" x2="53.3" y2="63.3"/>
+            <line class="tick" x1="68.6" y1="34.2" x2="74.7" y2="49.0"/>
+            <line class="tick maior" x1="100" y1="28" x2="100" y2="44"/>
+            <line class="tick" x1="131.4" y1="34.2" x2="125.3" y2="49.0"/>
+            <line class="tick maior" x1="158.0" y1="52.0" x2="146.7" y2="63.3"/>
+            <line class="tick" x1="175.8" y1="78.6" x2="161.0" y2="84.7"/>
+            <line class="tick maior" x1="182" y1="110" x2="166" y2="110"/>
+            <g class="velo-needle"><line x1="100" y1="110" x2="100" y2="48"></line></g>
+            <circle class="velo-pino" cx="100" cy="110" r="7"></circle>
+          </svg>
+          <span class="velo-valor">20+</span>
+          <span class="velo-rotulo">anos no mercado automotivo</span>
+        </div>
+      </div>
+
+      <div class="numero-item" data-anima style="--delay: 90ms">
+        <div class="velo" data-alvo="70" data-sufixo="+">
+          <svg class="velo-svg" viewBox="0 0 200 124" aria-hidden="true">
+            <path class="velo-track" d="M22 110 A 78 78 0 0 1 178 110"></path>
+            <path class="velo-fill" d="M22 110 A 78 78 0 0 1 178 110"></path>
+            <line class="tick maior" x1="18" y1="110" x2="34" y2="110"/>
+            <line class="tick" x1="24.2" y1="78.6" x2="39.0" y2="84.7"/>
+            <line class="tick maior" x1="42.0" y1="52.0" x2="53.3" y2="63.3"/>
+            <line class="tick" x1="68.6" y1="34.2" x2="74.7" y2="49.0"/>
+            <line class="tick maior" x1="100" y1="28" x2="100" y2="44"/>
+            <line class="tick" x1="131.4" y1="34.2" x2="125.3" y2="49.0"/>
+            <line class="tick maior" x1="158.0" y1="52.0" x2="146.7" y2="63.3"/>
+            <line class="tick" x1="175.8" y1="78.6" x2="161.0" y2="84.7"/>
+            <line class="tick maior" x1="182" y1="110" x2="166" y2="110"/>
+            <g class="velo-needle"><line x1="100" y1="110" x2="100" y2="48"></line></g>
+            <circle class="velo-pino" cx="100" cy="110" r="7"></circle>
+          </svg>
+          <span class="velo-valor">70+</span>
+          <span class="velo-rotulo">concession&aacute;rias geridas</span>
+        </div>
+      </div>
+
+      <div class="numero-item" data-anima style="--delay: 180ms">
+        <div class="velo" data-alvo="20" data-sufixo="+">
+          <svg class="velo-svg" viewBox="0 0 200 124" aria-hidden="true">
+            <path class="velo-track" d="M22 110 A 78 78 0 0 1 178 110"></path>
+            <path class="velo-fill" d="M22 110 A 78 78 0 0 1 178 110"></path>
+            <line class="tick maior" x1="18" y1="110" x2="34" y2="110"/>
+            <line class="tick" x1="24.2" y1="78.6" x2="39.0" y2="84.7"/>
+            <line class="tick maior" x1="42.0" y1="52.0" x2="53.3" y2="63.3"/>
+            <line class="tick" x1="68.6" y1="34.2" x2="74.7" y2="49.0"/>
+            <line class="tick maior" x1="100" y1="28" x2="100" y2="44"/>
+            <line class="tick" x1="131.4" y1="34.2" x2="125.3" y2="49.0"/>
+            <line class="tick maior" x1="158.0" y1="52.0" x2="146.7" y2="63.3"/>
+            <line class="tick" x1="175.8" y1="78.6" x2="161.0" y2="84.7"/>
+            <line class="tick maior" x1="182" y1="110" x2="166" y2="110"/>
+            <g class="velo-needle"><line x1="100" y1="110" x2="100" y2="48"></line></g>
+            <circle class="velo-pino" cx="100" cy="110" r="7"></circle>
+          </svg>
+          <span class="velo-valor">20+</span>
+          <span class="velo-rotulo">marcas atendidas</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- M&Eacute;TODO -->
+  <section class="metodo" id="metodo">
+    <div class="container">
+      <div class="secao-cabecalho" data-anima>
+        <span class="secao-tag">O m&eacute;todo</span>
+        <h2>Conhe&ccedil;a o M&eacute;todo F&Iacute;GITAL</h2>
+        <p>Tr&aacute;fego pago, intelig&ecirc;ncia comercial e evento presencial. J&aacute; levamos milhares de leads ao showroom de <strong>mais de 20 marcas</strong>.</p>
+      </div>
+      <div class="metodo-cards" data-anima>
+        <div class="tilt-card">
+          <div class="tilt-gravitate" aria-hidden="true"></div>
+          <div class="tilt-card-inner">
+            <div class="tilt-no">01</div>
+            <h3>Tr&aacute;fego</h3>
+            <p>Marketing de performance que leva o cliente certo at&eacute; a concession&aacute;ria.</p>
+          </div>
+        </div>
+        <div class="tilt-card">
+          <div class="tilt-gravitate" aria-hidden="true"></div>
+          <div class="tilt-card-inner">
+            <div class="tilt-no">02</div>
+            <h3>Agendamento</h3>
+            <p>O lead &eacute; qualificado e agendado pra equipe comercial n&atilde;o perder a hora.</p>
+          </div>
+        </div>
+        <div class="tilt-card">
+          <div class="tilt-gravitate" aria-hidden="true"></div>
+          <div class="tilt-card-inner">
+            <div class="tilt-no">03</div>
+            <h3>3 dias de evento</h3>
+            <p>Imers&atilde;o tem&aacute;tica no automobilismo + treinamento que converte na pista.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RUBINHO -->
+  <section class="rubinho bloco-escuro grao" id="rubinho">
+    <div class="container rubinho-grid">
+      <div class="rubinho-visual" data-anima="esquerda">
+        <div class="rubinho-avatar">
+          <img src="/assets/imagem-1.jpg" alt="Rubinho" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+          <span class="rubinho-online"><i></i>24h</span>
+        </div>
+        <div class="rubinho-audio" aria-hidden="true">
+          <span class="rubinho-play"></span>
+          <span class="rubinho-ondas">
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          </span>
+          <span class="rubinho-tempo">0:14</span>
+        </div>
+        <p class="rubinho-bordao">"Voc&ecirc; sempre primeiro."</p>
+      </div>
+
+      <div class="rubinho-conteudo" data-anima="direita">
+        <span class="secao-tag">Nossa IA de agendamento</span>
+        <h2>O RUBINHO N&Atilde;O DEIXA NENHUM LEAD ESCAPAR</h2>
+        <ul class="rubinho-features">
+          <li>
+            <span class="rf-icone" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round"/></svg>
+            </span>
+            <span class="rf-texto">Responde <strong>24 horas</strong>, sem fila e sem "retorno amanh&atilde;".</span>
+          </li>
+          <li>
+            <span class="rf-icone" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12h2M8 8v8M12 5v14M16 8v8M20 12h-2"/></svg>
+            </span>
+            <span class="rf-texto">Atende <strong>em &aacute;udio</strong>, como uma pessoa de verdade.</span>
+          </li>
+          <li>
+            <span class="rf-icone" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </span>
+            <span class="rf-texto"><strong>Especialista automotivo</strong> que responde qualquer pergunta.</span>
+          </li>
+          <li>
+            <span class="rf-icone" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h13l-3-3M20 16H7l3 3"/></svg>
+            </span>
+            <span class="rf-texto">J&aacute; qualifica na conversa: <strong>&eacute; compra ou troca?</strong></span>
+          </li>
+        </ul>
+        <div class="rubinho-cta-box">
+          <h3>Quer o Rubinho agendando leads da sua concession&aacute;ria?</h3>
+          <p>Fale com um especialista.</p>
+          <a class="btn btn-primario" href="#contato">QUERO O RUBINHO NA MINHA OPERA&Ccedil;&Atilde;O</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENTES -->
+  <section class="clientes" id="clientes">
+    <div class="container">
+      <div class="secao-cabecalho" data-anima>
+        <span class="secao-tag">Clientes atendidos</span>
+        <h2>Concession&aacute;rias que j&aacute; correram com a gente</h2>
+      </div>
+      <div class="clientes-grid">
+        <article class="cliente-card" data-anima style="--delay: 0ms">
+          <div class="cliente-logo"><img src="/assets/imagem-2.jpg" alt="Volkswagen" style="width:100%;height:100%;width:100%;height:100%;object-fit:cover;display:block;"></div>
+          <h3>Vigorito</h3>
+          <a class="cliente-link" href="https://www.youtube.com/watch?v=mgNBFEXXVNc" target="_blank" rel="noopener">Ver cobertura do evento <span aria-hidden="true">→</span></a>
+        </article>
+        <article class="cliente-card" data-anima style="--delay: 70ms">
+          <div class="cliente-logo"><img src="/assets/imagem-3.jpg" alt="Chevrolet" style="width:100%;height:100%;width:100%;height:100%;object-fit:cover;display:block;"></div>
+          <h3>Villa Lobos</h3>
+          <a class="cliente-link" href="https://www.youtube.com/watch?v=NVwPt8qdRLw" target="_blank" rel="noopener">Ver cobertura do evento <span aria-hidden="true">→</span></a>
+        </article>
+        <article class="cliente-card" data-anima style="--delay: 140ms">
+          <div class="cliente-logo"><img src="/assets/imagem-4.jpg" alt="GWM" style="width:100%;height:100%;width:100%;height:100%;object-fit:cover;display:block;"></div>
+          <h3>Alta</h3>
+          <a class="cliente-link" href="https://www.youtube.com/watch?v=GLHp8ZKcNqM" target="_blank" rel="noopener">Ver cobertura do evento <span aria-hidden="true">→</span></a>
+        </article>
+        <article class="cliente-card" data-anima style="--delay: 210ms">
+          <div class="cliente-logo"><img src="/assets/imagem-5.jpg" alt="Renault" style="width:100%;height:100%;width:100%;height:100%;object-fit:cover;display:block;"></div>
+          <h3>RPoint</h3>
+          <a class="cliente-link" href="https://www.youtube.com/watch?v=VthVx_2gwNU" target="_blank" rel="noopener">Ver cobertura do evento <span aria-hidden="true">→</span></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRA QUEM &Eacute; -->
+  <section class="para-quem" id="para-quem">
+    <div class="container para-quem-grid">
+      <div class="secao-cabecalho alinhado" data-anima="esquerda">
+        <span class="secao-tag">Pra quem &eacute;</span>
+        <h2>Feito pra quem<br>vive de vender carro.</h2>
+        <p>Se a sua opera&ccedil;&atilde;o depende de gente entrando na loja e de equipe batendo meta, o Grand Prix fala a sua l&iacute;ngua.</p>
+      </div>
+      <ul class="lista-publico">
+        <li data-anima="direita" style="--delay: 0ms">
+          <span class="lista-pub-num">01</span>
+          <span class="lista-pub-titulo">Donos e diretores de concession&aacute;ria</span>
+        </li>
+        <li data-anima="direita" style="--delay: 80ms">
+          <span class="lista-pub-num">02</span>
+          <span class="lista-pub-titulo">Gerentes comerciais</span>
+        </li>
+        <li data-anima="direita" style="--delay: 160ms">
+          <span class="lista-pub-num">03</span>
+          <span class="lista-pub-titulo">Gestores de marketing automotivo</span>
+        </li>
+        <li data-anima="direita" style="--delay: 240ms">
+          <span class="lista-pub-num">04</span>
+          <span class="lista-pub-titulo">Holdings e grupos do varejo automotivo</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- AVALIA&Ccedil;&Otilde;ES -->
+  <section class="avaliacoes" id="avaliacoes">
+    <div class="container">
+      <div class="secao-cabecalho avaliacoes-cabecalho" data-anima>
+        <span class="secao-tag">O que dizem</span>
+        <h2>Avalia&ccedil;&otilde;es de quem j&aacute; participou</h2>
+        <div class="avaliacoes-nota">
+          <strong>4,8</strong>
+          <span class="estrelas" aria-hidden="true">★★★★★</span>
+          <span class="avaliacoes-fonte">no Google Meu Neg&oacute;cio</span>
+        </div>
+      </div>
+      <div class="avalia-colunas" role="region" aria-label="Avalia&ccedil;&otilde;es">
+
+        <!-- Coluna 1 -->
+        <div class="avalia-col">
+          <ul class="avalia-lista">
+            <li class="avalia-card"><span class="avalia-estrelas" aria-hidden="true">★★★★★</span><blockquote>"Show de bola Parab&eacute;ns pelo o Eventos (!Tomara que tenha ++)"</blockquote><div class="avalia-autor"><img class="avalia-avatar" src="/assets/carlos-marcio.jpg" alt=""><div><span class="avalia-autor-nome">Carlos Marcio Santos</span><span class="avalia-autor-via">via Google</span></div></div></li>
+            <li class="avalia-card"><span class="avalia-estrelas" aria-hidden="true">★★★★★</span><blockquote>"Parab&eacute;ns pelo evento, equipe de milh&otilde;es &#128080;&#128080;&#128080;&#128080;"</blockquote><div class="avalia-autor"><img class="avalia-avatar" src="/assets/cinthia-moraes.jpg" alt=""><div><span class="avalia-autor-nome">Cinthia Moraes</span><span class="avalia-autor-via">via Google</span></div></div></li>
+            <li class="avalia-card"><span class="avalia-estrelas" aria-hidden="true">★★★★★</span><blockquote>"Muito bom o evento. Foi um resultado incr&iacute;vel."</blockquote><div class="avalia-autor"><span class="avalia-avatar" aria-hidden="true"></span><div><span class="avalia-autor-nome">Kelcy Guimaraes</span><span class="avalia-autor-via">via Google</span></div></div></li>
+            <!-- duplicata pra loop seamless -->
+            <li class="avalia-card" aria-hidden="true"><span class="avalia-estrelas" aria-hidden="true">★★★★★</span><blockquote>"Show de bola Parab&eacute;ns pelo o Eventos (!Tomara que tenha ++)"</blockquote><div class="avalia-autor"><img class="avalia-avatar" src="/assets/carlos-marcio.jpg" alt=""><div><span class="avalia-autor-nome">Carlos Marcio Santos</span><span class="avalia-autor-via">via Google</span></div></div></li>
+            <li class="avalia-card" aria-hidden="true"><span class="avalia-estrelas" aria-hidden="true">★★★★★</span><blockquote>"Parab&eacute;ns pelo evento, equipe de milh&otilde;es &#128080;&#128080;&#128080;&#128080;"</blockquote><div class="avalia-autor"><img class="avalia-avatar" src="/assets/cinthia-moraes.jpg" alt=""><div><span class="avalia-autor-nome">Cinthia Moraes</span><span class="avalia-autor-via">via Google</span></div></div></li>
+            <li class="avalia-card" aria-hidden="true"><span class="avalia-estrelas" aria-hidden="true">★★★★★</span><blockquote>"Muito bom o evento. Foi um resultado incr&iacute;vel."</blockquote><div class="avalia-autor"><span class="avalia-avatar" aria-hidden="true"></span><div><span class="avalia-autor-nome">Kelcy Guimaraes</span><span class="avalia-autor-via">via Google</span></div></div></li>
+          </ul>
+        </div>
+
+        <!-- Coluna 2 -->
+        <div class="avalia-col">
+          <ul class="avalia-lista">
+            <li class="avalia-card"><span class="avalia-estrelas" aria-hidden="true">★★★★★</span><blockquote>"O evento foi maravilhoso e com bons resultados, parab&eacute;ns a todos!"</blockquote><div class="avalia-autor"><img class="avalia-avatar" src="/assets/thassiane-palma.jpg" alt=""><div><span class="avalia-autor-nome">Thassiane Palma</span><span class="avalia-autor-via">via Google</span></div></div></li>
+            <li class="avalia-card"><span class="avalia-estrelas" aria-hidden="true">★★★★★</span><blockquote>"Evento Sensacional! Parab&eacute;ns a todos os evolvidos e aguardo ansiosamente pelo pr&oacute;ximo! Sucesso a todos e at&eacute; a pr&oacute;xima!"</blockquote><div class="avalia-autor"><img class="avalia-avatar" src="/assets/fabricio-valente.jpg" alt=""><div><span class="avalia-autor-nome">Fabricio Valente</span><span class="avalia-autor-via">via Google</span></div></div></li>
+            <li class="avalia-card" aria-hidden="true"><span class="avalia-estrelas" aria-hidden="true">★★★★★</span><blockquote>"O evento foi maravilhoso e com bons resultados, parab&eacute;ns a todos!"</blockquote><div class="avalia-autor"><img class="avalia-avatar" src="/assets/thassiane-palma.jpg" alt=""><div><span class="avalia-autor-nome">Thassiane Palma</span><span class="avalia-autor-via">via Google</span></div></div></li>
+            <li class="avalia-card" aria-hidden="true"><span class="avalia-estrelas" aria-hidden="true">★★★★★</span><blockquote>"Evento Sensacional! Parab&eacute;ns a todos os evolvidos e aguardo ansiosamente pelo pr&oacute;ximo! Sucesso a todos e at&eacute; a pr&oacute;xima!"</blockquote><div class="avalia-autor"><img class="avalia-avatar" src="/assets/fabricio-valente.jpg" alt=""><div><span class="avalia-autor-nome">Fabricio Valente</span><span class="avalia-autor-via">via Google</span></div></div></li>
+          </ul>
+        </div>
+
+        <!-- Coluna 3 -->
+        <div class="avalia-col">
+          <ul class="avalia-lista">
+            <li class="avalia-card"><span class="avalia-estrelas" aria-hidden="true">★★★★★</span><blockquote>"Evento muito satisfat&oacute;rio! &#128588;&#128588;&#128588;"</blockquote><div class="avalia-autor"><img class="avalia-avatar" src="/assets/wefison-araujo.jpg" alt=""><div><span class="avalia-autor-nome">Wefison Araujo</span><span class="avalia-autor-via">via Google</span></div></div></li>
+            <li class="avalia-card"><span class="avalia-estrelas" aria-hidden="true">★★★★★</span><blockquote>"Amei fazer parte do Grand Prix de vendas! Experi&ecirc;ncia excelente, superou as minhas expectativas!!!"</blockquote><div class="avalia-autor"><img class="avalia-avatar" src="/assets/ingrid-almeida.jpg" alt=""><div><span class="avalia-autor-nome">Ingrid Almeida</span><span class="avalia-autor-via">via Google</span></div></div></li>
+            <li class="avalia-card" aria-hidden="true"><span class="avalia-estrelas" aria-hidden="true">★★★★★</span><blockquote>"Evento muito satisfat&oacute;rio! &#128588;&#128588;&#128588;"</blockquote><div class="avalia-autor"><img class="avalia-avatar" src="/assets/wefison-araujo.jpg" alt=""><div><span class="avalia-autor-nome">Wefison Araujo</span><span class="avalia-autor-via">via Google</span></div></div></li>
+            <li class="avalia-card" aria-hidden="true"><span class="avalia-estrelas" aria-hidden="true">★★★★★</span><blockquote>"Amei fazer parte do Grand Prix de vendas! Experi&ecirc;ncia excelente, superou as minhas expectativas!!!"</blockquote><div class="avalia-autor"><img class="avalia-avatar" src="/assets/ingrid-almeida.jpg" alt=""><div><span class="avalia-autor-nome">Ingrid Almeida</span><span class="avalia-autor-via">via Google</span></div></div></li>
+          </ul>
+        </div>
+
+      </div>
+      <div class="avaliacoes-cta">
+        <a class="btn btn-fantasma" href="https://share.google/BRahOnFeIuoLFK4xy" target="_blank" rel="noopener noreferrer">Ver no Google</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section class="cta" id="contato">
+    <div class="container">
+      <div class="contato-caixa grao" data-anima>
+        <div class="contato-texto">
+          <h2>Pronto pra largar na frente?</h2>
+          <p>Conta pra gente o momento da sua concession&aacute;ria. A gente mostra como o F&iacute;gital se encaixa na sua opera&ccedil;&atilde;o.</p>
+        </div>
+        <form class="contato-form" action="https://formspree.io/f/xpqgewjz" method="POST">
+          <div class="campo">
+            <label for="nome">Nome</label>
+            <input id="nome" name="nome" type="text" placeholder="Seu nome" required>
+          </div>
+          <div class="campo">
+            <label for="empresa">Concession&aacute;ria / Empresa</label>
+            <input id="empresa" name="empresa" type="text" placeholder="Nome da empresa">
+          </div>
+          <div class="campo-linha">
+            <div class="campo">
+              <label for="email">E-mail</label>
+              <input id="email" name="email" type="email" placeholder="voce@empresa.com" required>
+            </div>
+            <div class="campo">
+              <label for="telefone">Telefone</label>
+              <input id="telefone" name="telefone" type="tel" placeholder="(00) 00000-0000">
+            </div>
+          </div>
+          <div class="campo">
+            <label for="mensagem">Mensagem</label>
+            <textarea id="mensagem" name="mensagem" rows="3" placeholder="Como podemos ajudar?"></textarea>
+          </div>
+          <button class="btn btn-primario" type="submit">Falar com a equipe</button>
+          <p class="contato-aviso">Resposta em at&eacute; 1 dia &uacute;til.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="secao-cabecalho" data-anima>
+        <span class="secao-tag">Perguntas frequentes</span>
+        <h2>Ainda com d&uacute;vida?</h2>
+      </div>
+      <div class="faq-lista" data-anima>
+        <details class="faq-item">
+          <summary>O que &eacute; o Grand Prix de Vendas?<span class="faq-icone" aria-hidden="true"></span></summary>
+          <p>&Eacute; o m&eacute;todo F&iacute;gital (f&iacute;sico + digital) de vendas pro varejo automotivo: marketing de performance que leva o cliente certo at&eacute; a concession&aacute;ria, mais treinamento presencial num evento de 3 dias com ambienta&ccedil;&atilde;o tem&aacute;tica no automobilismo. Fundado por Edney Ulisses, com 20+ anos de mercado automotivo.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Como funciona o m&eacute;todo F&iacute;gital na pr&aacute;tica?<span class="faq-icone" aria-hidden="true"></span></summary>
+          <p>Em 3 etapas: tr&aacute;fego pago leva o lead certo at&eacute; a concession&aacute;ria; o Rubinho (nossa IA) qualifica e agenda esse lead pra equipe comercial n&atilde;o perder a hora; e o evento presencial de 3 dias fecha o ciclo, com treinamento que converte na pista.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Quem &eacute; o Rubinho?<span class="faq-icone" aria-hidden="true"></span></summary>
+          <p>&Eacute; a IA de agendamento do Grand Prix de Vendas. Responde 24h por &aacute;udio, como uma pessoa de verdade, tira d&uacute;vida de especialista automotivo e j&aacute; qualifica na conversa se &eacute; compra ou troca &mdash; garantindo que o lead chegue agendado no evento.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Pra quem &eacute; o Grand Prix de Vendas?<span class="faq-icone" aria-hidden="true"></span></summary>
+          <p>Pra donos e diretores de concession&aacute;ria, gerentes comerciais, gestores de marketing automotivo e holdings/grupos do varejo automotivo que precisam de gente entrando na loja e de equipe batendo meta.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Como fa&ccedil;o pra participar?<span class="faq-icone" aria-hidden="true"></span></summary>
+          <p>Preenche o formul&aacute;rio de contato com o momento da sua concession&aacute;ria. Nosso time retorna em at&eacute; 1 dia &uacute;til pra mostrar como o F&iacute;gital se encaixa na sua opera&ccedil;&atilde;o.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="rodape bloco-escuro grao">
+  <div class="container rodape-interno">
+    <div class="rodape-marca">
+      <img class="rodape-logo-img" src="/assets/logo-horizontal-branco.png" alt="Grand Prix de Vendas" width="240" height="70">
+      <p>M&eacute;todo F&iacute;gital de vendas pro varejo automotivo.</p>
+      <div class="rodape-social">
+        <a href="https://www.instagram.com/gpdevendas/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/company/grupogpv/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+      <div class="rodape-contato">
+        <a class="cta-wa" href="https://wa.me/5511992521791" target="_blank" rel="noopener">WhatsApp</a>
+        <span>&middot;</span>
+        <a href="mailto:edney@grandprixdevendas.com.br">edney@grandprixdevendas.com.br</a>
+      </div>
+    </div>
+    <div class="rodape-grupo">
+      <span>Uma marca do</span>
+      <strong>Grupo GPV</strong>
+      <nav class="rodape-links" aria-label="Marcas do grupo">
+        <a href="/">Grand Prix de Vendas</a>
+        <a href="https://edneyulisses.com.br">Edney Ulisses</a>
+        <a href="https://veloce-site-production.up.railway.app/">Veloce</a>
+        <a href="https://projetoconquista.com.br">Projeto Conquista</a>
+      </nav>
+    </div>
+  </div>
+  <div class="container rodape-base">
+    <span>© 2026 Grupo GPV. Todos os direitos reservados.</span>
+  </div>
+</footer>
+
+<script>
+// ── TiltCard + Gravitate ──────────────────────────────────────────────────
+(() => {
+  const MAX = 12;
+  const STIFFNESS = 200, DAMPING = 15, MASS = 0.3;
+  const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!canHover || reduce) return;
+
+  function spring(pos, vel, target, dt) {
+    const force = (target - pos) * STIFFNESS / MASS - vel * DAMPING / MASS;
+    const v = vel + force * dt;
+    return [pos + v * dt, v];
+  }
+
+  document.querySelectorAll('.tilt-card').forEach(card => {
+    const gravitate = card.querySelector('.tilt-gravitate');
+    let rx = 0, ry = 0, gx = 50, gy = 50;
+    let vrx = 0, vry = 0, vgx = 0, vgy = 0;
+    let tRx = 0, tRy = 0, tGx = 50, tGy = 50;
+    let hovered = false, rafId = null, lastT = null;
+
+    function loop(t) {
+      const dt = Math.min((t - (lastT || t)) / 1000, 0.008);
+      lastT = t;
+      [rx, vrx] = spring(rx, vrx, tRx, dt);
+      [ry, vry] = spring(ry, vry, tRy, dt);
+      [gx, vgx] = spring(gx, vgx, tGx, dt);
+      [gy, vgy] = spring(gy, vgy, tGy, dt);
+      card.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+      if (gravitate) gravitate.style.background =
+        `radial-gradient(circle at ${gx}% ${gy}%, rgba(237,7,23,0.22), transparent 65%)`;
+      const settled = !hovered && Math.abs(rx) < 0.01 && Math.abs(ry) < 0.01
+        && Math.abs(vrx) < 0.01 && Math.abs(vry) < 0.01;
+      if (settled) { rafId = null; lastT = null; return; }
+      rafId = requestAnimationFrame(loop);
+    }
+
+    function start() { if (!rafId) rafId = requestAnimationFrame(loop); }
+
+    card.addEventListener('mouseenter', () => {
+      hovered = true;
+      if (gravitate) gravitate.style.opacity = '1';
+      start();
+    });
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width;
+      const py = (e.clientY - r.top) / r.height;
+      tRx = (0.5 - py) * MAX; tRy = (px - 0.5) * MAX;
+      tGx = px * 100; tGy = py * 100;
+    });
+    card.addEventListener('mouseleave', () => {
+      hovered = false;
+      tRx = 0; tRy = 0; tGx = 50; tGy = 50;
+      if (gravitate) gravitate.style.opacity = '0';
+      start();
+    });
+  });
+})();
+
+// ── FlagReveal ────────────────────────────────────────────────────────────
+(() => {
+  const el = document.getElementById('flag-reveal');
+  const done = () => window.dispatchEvent(new Event('intro-done'));
+  if (!el) { done(); return; }
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) { el.remove(); done(); return; }
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => el.classList.add('reveal'), 450);
+  setTimeout(() => {
+    document.body.style.overflow = '';
+    el.remove();
+    done();
+  }, 1050);
+})();
+
+// ── Anima&ccedil;&otilde;es de entrada ──────────────────────────────────────────────────
+(() => {
+  const alvos = document.querySelectorAll('[data-anima]');
+  const iniciar = () => {
+    if (!('IntersectionObserver' in window)) {
+      alvos.forEach(a => a.classList.add('visivel'));
+      return;
+    }
+    const obs = new IntersectionObserver((entradas) => {
+      for (const e of entradas) {
+        if (e.isIntersecting) {
+          e.target.classList.add('visivel');
+          // Para a timeline, tamb&eacute;m marca o pai .timeline
+          if (e.target.closest('.timeline')) {
+            e.target.closest('.timeline').classList.add('visivel');
+          }
+          obs.unobserve(e.target);
+        }
+      }
+    }, { threshold: 0.15 });
+    alvos.forEach(a => obs.observe(a));
+  };
+  let comecou = false;
+  const go = () => { if (comecou) return; comecou = true; iniciar(); };
+  window.addEventListener('intro-done', go);
+  setTimeout(go, 2600);
+})();
+
+// ── Scroll progress ───────────────────────────────────────────────────────
+(() => {
+  const barra = document.getElementById('scroll-progress');
+  if (!barra) return;
+  let ticking = false;
+  const atualizar = () => {
+    const h = document.documentElement;
+    const max = h.scrollHeight - h.clientHeight;
+    const p = max > 0 ? (h.scrollTop / max) * 100 : 0;
+    barra.style.width = p + '%';
+    ticking = false;
+  };
+  window.addEventListener('scroll', () => {
+    if (!ticking) { ticking = true; requestAnimationFrame(atualizar); }
+  }, { passive: true });
+  atualizar();
+})();
+
+// ── L&acirc;mina verde no CTA do menu enquanto a se&ccedil;&atilde;o do Rubinho estiver na tela ──
+(() => {
+  const cta = document.querySelector('.nav-cta');
+  const secaoRubinho = document.getElementById('rubinho');
+  if (!cta || !secaoRubinho || !('IntersectionObserver' in window)) return;
+  const obs = new IntersectionObserver((entradas) => {
+    entradas.forEach((entrada) => cta.classList.toggle('cta-lamina', entrada.isIntersecting));
+  }, { threshold: 0.35 });
+  obs.observe(secaoRubinho);
+})();
+
+// ── Veloc&iacute;metro ───────────────────────────────────────────────────────────
+(() => {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const velos = document.querySelectorAll('.velo');
+  if (!velos.length) return;
+  const run = (el) => {
+    const valorEl = el.querySelector('.velo-valor');
+    const alvo = parseInt(el.dataset.alvo, 10) || 0;
+    const sufixo = el.dataset.sufixo || '';
+    el.classList.add('run');
+    if (reduce) { valorEl.textContent = alvo + sufixo; return; }
+    const dur = 1600;
+    const inicio = performance.now();
+    const passo = (t) => {
+      const p = Math.min((t - inicio) / dur, 1);
+      const e = 1 - Math.pow(1 - p, 3);
+      valorEl.textContent = Math.round(alvo * e) + sufixo;
+      if (p < 1) requestAnimationFrame(passo);
+    };
+    requestAnimationFrame(passo);
+  };
+  if (!('IntersectionObserver' in window)) { velos.forEach(run); return; }
+  const obs = new IntersectionObserver((ents) => {
+    for (const e of ents) {
+      if (e.isIntersecting) { run(e.target); obs.unobserve(e.target); }
+    }
+  }, { threshold: 0.4 });
+  velos.forEach(v => obs.observe(v));
+})();
+</script>
+
+</body>
+</html>
