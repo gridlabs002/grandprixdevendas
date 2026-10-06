@@ -45,3 +45,5 @@
 @keyframes welcome-smoke-rise{0%{opacity:0;transform:translate(0,0) scale(.45)}15%{opacity:.72}65%{opacity:.35}100%{opacity:0;transform:translate(calc(var(--smoke-direction) * 120px),calc(-1 * var(--rise))) scale(2.5)}}
 @media(max-width:600px){.welcome-flag{background-size:auto,72px 72px}.welcome-smoke{width:35%}}
 @media(prefers-reduced-motion:reduce){#flag-reveal{display:none!important}}
+
+.brand-cover{aspect-ratio:16/9;background:#fff;display:grid;place-items:center;padding:30px}.brand-cover img{height:auto;object-fit:contain}.brand-cover:after{display:none}.brand-store{color:#6b6864;margin:-12px 0 24px;font-size:16px}.brand-card .portfolio-body h3{margin-bottom:18px}
