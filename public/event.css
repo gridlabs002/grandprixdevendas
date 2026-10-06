@@ -28,3 +28,20 @@
 @media(max-width:900px){.event-visual.hero-gallery{max-width:620px;box-shadow:10px 10px 0 #ed0717}.hero-photo-columns{height:480px}.hero-gallery-top{padding:14px}.hero-gallery-bottom{padding:12px 14px}}
 @media(max-width:480px){.hero-photo-columns{height:390px;gap:7px;padding:0 7px}.hero-photo-set{gap:7px;padding-bottom:7px}.hero-photo-tile{height:185px}.hero-photo-column:nth-child(2) .hero-photo-tile{height:210px}.hero-gallery-top>span:last-child{display:none}.hero-gallery-bottom>span{font-size:8px;letter-spacing:.05em}.hero-gallery-bottom a{font-size:11px}}
 @media(prefers-reduced-motion:reduce){.hero-photo-loop{animation:none}}
+
+/* Abertura de boas-vindas */
+#flag-reveal{background:transparent;transition:none;will-change:auto;pointer-events:none}
+#flag-reveal.reveal{transform:none;opacity:1}
+.welcome-flag{position:absolute;top:-5%;bottom:-5%;width:51%;background:linear-gradient(100deg,rgba(0,0,0,.32),transparent 28%,rgba(0,0,0,.16) 48%,rgba(255,255,255,.3) 65%,rgba(0,0,0,.22)),repeating-conic-gradient(#171717 0% 25%,#fafafa 0% 50%) 0 0/110px 110px;box-shadow:0 0 45px #0008;transition:transform 1.45s cubic-bezier(.65,0,.2,1);z-index:1}
+.welcome-flag-left{left:0;transform-origin:left center;clip-path:polygon(0 0,100% 0,98% 18%,100% 38%,97% 57%,100% 78%,98% 100%,0 100%)}
+.welcome-flag-right{right:0;transform-origin:right center;clip-path:polygon(0 0,100% 0,100% 100%,2% 100%,0 78%,3% 57%,0 38%,2% 18%)}
+.reveal .welcome-flag-left{transform:translateX(-110%) rotate(-7deg)}
+.reveal .welcome-flag-right{transform:translateX(110%) rotate(7deg)}
+.welcome-confetti{position:absolute;inset:0;width:100%;height:100%;z-index:3}
+.welcome-smoke{position:absolute;bottom:0;width:24%;height:100%;z-index:2}
+.welcome-smoke-left{left:-10%;--smoke-direction:1}
+.welcome-smoke-right{right:-10%;--smoke-direction:-1}
+.welcome-smoke i{position:absolute;bottom:-150px;left:0;width:var(--size);height:var(--size);border-radius:50%;background:radial-gradient(ellipse,#f5f4f2bb 0%,#d7d5d299 28%,#b5b0aa44 46%,transparent 70%);opacity:0;animation:welcome-smoke-rise 4.3s ease-out var(--delay) both}
+@keyframes welcome-smoke-rise{0%{opacity:0;transform:translate(0,0) scale(.45)}15%{opacity:.72}65%{opacity:.35}100%{opacity:0;transform:translate(calc(var(--smoke-direction) * 120px),calc(-1 * var(--rise))) scale(2.5)}}
+@media(max-width:600px){.welcome-flag{background-size:auto,72px 72px}.welcome-smoke{width:35%}}
+@media(prefers-reduced-motion:reduce){#flag-reveal{display:none!important}}
