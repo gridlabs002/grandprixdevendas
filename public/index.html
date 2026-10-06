@@ -767,6 +767,7 @@ section { padding-block: clamp(4rem, 9vw, 7rem); }
   .rubinho-grid { grid-template-columns: 1fr; }
 }
 </style>
+<link rel="stylesheet" href="/event.css">
 </head>
 <body class="tema-gpdevendas">
 
@@ -817,35 +818,31 @@ section { padding-block: clamp(4rem, 9vw, 7rem); }
       <a href="https://www.instagram.com/gpdevendas/" target="_blank" rel="noopener" aria-label="Instagram" class="nav-instagram">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
       </a>
-      <a class="nav-cta" href="#contato">Falar com a gente</a>
+      <a class="nav-cta" href="#contato">Quero o evento ↗</a>
     </nav>
   </div>
 </header>
 
 <main>
 
-  <!-- HERO -->
-  <section class="hero grao">
+  <section class="hero event-hero" id="inicio">
     <div class="hero-faixas" aria-hidden="true"></div>
-    <div class="container hero-conteudo">
-      <span class="hero-tag" data-anima>F&iacute;sico + Digital = F&iacute;gital</span>
-      <h1 data-anima style="--delay: 80ms">
-        A corrida pela venda<br>
-        <span class="hero-faixa-vermelha">come&ccedil;a antes</span> do cliente<br>
-        entrar na sua loja.
-      </h1>
-      <p class="hero-texto" data-anima style="--delay: 160ms">
-        O Grand Prix de Vendas une marketing de performance e treinamento
-        presencial num m&eacute;todo s&oacute;. Enche o showroom de gente certa e
-        prepara a equipe pra fechar.
-      </p>
-      <div class="hero-acoes" data-anima style="--delay: 240ms">
-        <a class="btn btn-primario" href="#contato">Quero acelerar minhas vendas</a>
-        <a class="btn btn-fantasma" href="#metodo">Ver o m&eacute;todo</a>
+    <div class="container event-hero-grid">
+      <div class="event-copy" data-anima>
+        <span class="hero-tag">EVENTO PRESENCIAL / VAREJO AUTOMOTIVO</span>
+        <h1>O próximo<br>Grand Prix é<br><span class="destaque-texto">na sua loja.</span></h1>
+        <p class="hero-texto">Marketing para atrair. Rubinho para atender, qualificar e agendar. Um evento presencial de <strong>3 dias</strong> com treinamento da equipe para transformar oportunidades em vendas.</p>
+        <div class="hero-acoes"><a class="btn btn-primario" href="#contato">Quero o evento na minha concessionária <span aria-hidden="true">↗</span></a><a class="event-secondary" href="#metodo">Conheça a operação ↓</a></div>
+        <div class="event-tags"><span>Físico + digital</span><span>IA no agendamento</span><span>Equipe na pista</span></div>
+      </div>
+      <div class="event-visual" data-anima="direita">
+        <div class="event-ticket"><span>GRAND PRIX DE VENDAS</span><strong>3 DIAS.<br>UMA OPERAÇÃO<br>INTEGRADA.</strong><span>TRÁFEGO / IA / EVENTO</span></div>
+        <a class="event-film" href="https://www.youtube.com/watch?v=GLHp8ZKcNqM" target="_blank" rel="noopener" aria-label="Assistir à cobertura do Grand Prix na Alta GWM"><img src="/assets/evento-alta.jpg" alt="Capa da cobertura do Grand Prix de Vendas na Alta GWM" width="480" height="360" fetchpriority="high"><span class="film-play" aria-hidden="true">▶</span><span class="film-caption">NA PRÁTICA / ALTA GWM <b>ASSISTIR ↗</b></span></a>
+        <div class="event-label"><span class="live-dot"></span> DO PRIMEIRO CONTATO AO SHOWROOM</div>
       </div>
     </div>
   </section>
-
+  <div class="race-ticker" aria-hidden="true"><div>ATRAIR <i>↗</i> ATENDER <i>↗</i> QUALIFICAR <i>↗</i> AGENDAR <i>↗</i> RECEBER <i>↗</i> VENDER <i>↗</i> ATRAIR <i>↗</i> ATENDER <i>↗</i> QUALIFICAR <i>↗</i> AGENDAR <i>↗</i> RECEBER <i>↗</i> VENDER <i>↗</i></div></div>
   <!-- N&Uacute;MEROS -->
   <section class="numeros bloco-escuro grao">
     <div class="container numeros-grid">
@@ -924,8 +921,8 @@ section { padding-block: clamp(4rem, 9vw, 7rem); }
     <div class="container">
       <div class="secao-cabecalho" data-anima>
         <span class="secao-tag">O m&eacute;todo</span>
-        <h2>Conhe&ccedil;a o M&eacute;todo F&Iacute;GITAL</h2>
-        <p>Tr&aacute;fego pago, intelig&ecirc;ncia comercial e evento presencial. J&aacute; levamos milhares de leads ao showroom de <strong>mais de 20 marcas</strong>.</p>
+        <h2>Uma corrida. Três etapas.</h2>
+        <p>Antes do evento, a operação começa no digital. Durante os três dias, o foco está no showroom. Marketing, inteligência artificial e equipe comercial trabalham na mesma direção.</p>
       </div>
       <div class="metodo-cards" data-anima>
         <div class="tilt-card">
@@ -940,8 +937,8 @@ section { padding-block: clamp(4rem, 9vw, 7rem); }
           <div class="tilt-gravitate" aria-hidden="true"></div>
           <div class="tilt-card-inner">
             <div class="tilt-no">02</div>
-            <h3>Agendamento</h3>
-            <p>O lead &eacute; qualificado e agendado pra equipe comercial n&atilde;o perder a hora.</p>
+            <h3>Rubinho: atendimento e agendamento</h3>
+            <p>A IA atende o interessado, qualifica a conversa e agenda a visita para a equipe comercial.</p>
           </div>
         </div>
         <div class="tilt-card">
@@ -976,7 +973,7 @@ section { padding-block: clamp(4rem, 9vw, 7rem); }
 
       <div class="rubinho-conteudo" data-anima="direita">
         <span class="secao-tag">Nossa IA de agendamento</span>
-        <h2>O RUBINHO N&Atilde;O DEIXA NENHUM LEAD ESCAPAR</h2>
+        <h2>O Rubinho prepara<br>a próxima visita.</h2>
         <ul class="rubinho-features">
           <li>
             <span class="rf-icone" aria-hidden="true">
@@ -1004,9 +1001,9 @@ section { padding-block: clamp(4rem, 9vw, 7rem); }
           </li>
         </ul>
         <div class="rubinho-cta-box">
-          <h3>Quer o Rubinho agendando leads da sua concession&aacute;ria?</h3>
-          <p>Fale com um especialista.</p>
-          <a class="btn btn-primario" href="#contato">QUERO O RUBINHO NA MINHA OPERA&Ccedil;&Atilde;O</a>
+          <h3>IA no digital. Sua equipe no evento.</h3>
+          <p>Conheça o Grand Prix com atendimento, qualificação e agendamento integrados.</p>
+          <a class="btn btn-primario" href="#contato">QUERO CONHECER O EVENTO</a>
         </div>
       </div>
     </div>
@@ -1132,8 +1129,8 @@ section { padding-block: clamp(4rem, 9vw, 7rem); }
     <div class="container">
       <div class="contato-caixa grao" data-anima>
         <div class="contato-texto">
-          <h2>Pronto pra largar na frente?</h2>
-          <p>Conta pra gente o momento da sua concession&aacute;ria. A gente mostra como o F&iacute;gital se encaixa na sua opera&ccedil;&atilde;o.</p>
+          <h2>Vamos levar o Grand Prix<br>para a sua loja?</h2>
+          <p>Informe sua concessionária, cidade e período desejado. Nossa equipe entra em contato para entender a operação e apresentar uma proposta para o evento presencial.</p>
         </div>
         <form class="contato-form" action="https://formspree.io/f/xpqgewjz" method="POST">
           <div class="campo">
@@ -1144,7 +1141,7 @@ section { padding-block: clamp(4rem, 9vw, 7rem); }
             <label for="empresa">Concession&aacute;ria / Empresa</label>
             <input id="empresa" name="empresa" type="text" placeholder="Nome da empresa">
           </div>
-          <div class="campo-linha">
+          <div class="campo-linha"><div class="campo"><label for="cidade">Cidade / Estado</label><input id="cidade" name="cidade" autocomplete="address-level2" placeholder="Onde será o evento?" required></div><div class="campo"><label for="periodo">Período desejado</label><input id="periodo" name="periodo" placeholder="Mês ou período previsto"></div></div><div class="campo-linha">
             <div class="campo">
               <label for="email">E-mail</label>
               <input id="email" name="email" type="email" placeholder="voce@empresa.com" required>
@@ -1158,7 +1155,7 @@ section { padding-block: clamp(4rem, 9vw, 7rem); }
             <label for="mensagem">Mensagem</label>
             <textarea id="mensagem" name="mensagem" rows="3" placeholder="Como podemos ajudar?"></textarea>
           </div>
-          <button class="btn btn-primario" type="submit">Falar com a equipe</button>
+          <button class="btn btn-primario" type="submit">Solicitar proposta para o evento ↗</button>
           <p class="contato-aviso">Resposta em at&eacute; 1 dia &uacute;til.</p>
         </form>
       </div>
@@ -1400,5 +1397,6 @@ section { padding-block: clamp(4rem, 9vw, 7rem); }
 })();
 </script>
 
+<script src="/event.js" defer></script>
 </body>
 </html>
